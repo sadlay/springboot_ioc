@@ -6,9 +6,14 @@ import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSourceFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
+
+import com.lay.ioc.service.UserService;
 
 /**
  * @ComponentScan 标明会进行扫描
@@ -20,9 +25,7 @@ import org.springframework.context.annotation.Configuration;
 // 或 @ComponentScan(basePackageClasses= {User.class})
 @Configuration
 public class AppConfig {
-
-	@Bean(name = "dataSource", destroyMethod = "close")
-	@Conditional(value = DataBaseConditional.class)
+	@Bean
 	public DataSource getDataSource(@Value("${test1.driverName}") String driver, @Value("${test1.url}") String url,
 			@Value("${test1.username}") String username, @Value("${test1.password}") String password) {
 		Properties prop = new Properties();
@@ -36,7 +39,6 @@ public class AppConfig {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("dataSource装备成功");
 		return dataSource;
 	}
 }
