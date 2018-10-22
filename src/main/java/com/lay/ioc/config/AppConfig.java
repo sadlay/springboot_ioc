@@ -6,16 +6,21 @@ import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSourceFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  * @ComponentScan 标明会进行扫描
  * @author Lay
  */
-@SpringBootApplication(scanBasePackages="com.lay.ioc.*")
+//@SpringBootApplication(scanBasePackages="com.lay.ioc.*")
+@PropertySource(value= {"classpath:test1.properties"},ignoreResourceNotFound=true)
+@ComponentScan(basePackages= {"com.lay.ioc.*"},lazyInit=true)
+@EnableAutoConfiguration
 // @ComponentScan(excludeFilters= {@Filter(classes= {Service.class})})
 // 或 @ComponentScan(basePackages= {"com.lay.ioc.pojo"})
 // 或 @ComponentScan(basePackageClasses= {User.class})
