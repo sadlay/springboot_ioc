@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.lay</groupId>
-	<artifactId>ioc</artifactId>
+	<artifactId>springboot_ioc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>ioc</name>
+	<name>springboot_ioc</name>
 	<description>Learning project for Spring Boot</description>
 
 	<parent>
